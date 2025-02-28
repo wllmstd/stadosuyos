@@ -1,3 +1,4 @@
+
       * {
             margin: 0;
             padding: 0;
@@ -221,8 +222,8 @@
 
 /* Image Styling */
 .about-image img {
-    width: auto;
-    height: auto;
+    width: 300px;
+    height: 470px;
     border-radius: 10px;
     object-fit: cover;
 }
@@ -277,57 +278,75 @@
 }
 
 
-/* INTRODUCTION */
+
+
+
+/* Skills Section */
+/* Skills Section */
 #skills {
     text-align: center;
-    padding: 50px 0;
+    padding: 50px 5%;
+    background: #f5f5f5; /* Same as your background */
 }
 
+/* Section Title */
 .section-title {
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    color: #333;
 }
 
+/* 3 Columns Layout */
 .skills-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    padding: 0 5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: calc(100% - 5in); /* Keeps inside 2.5-inch margins */
+    margin: auto;
+    padding-left: 0.5in;
 }
 
+/* Individual Skill Column */
 .skill-column {
-    flex: 1;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
 }
 
-/* Header with Icon */
+/* Skill Header (QA Engineer + Icon) */
 .skill-header {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
+    font-size: 1.2rem;
     margin-bottom: 15px;
 }
 
 .work-icon {
-    width: 40px;
-    height: 40px;
+    font-size: 35px;
+    color: #4169e1; /* Your blue palette */
 }
 
-/* Skills & Progress Bars */
+/* Skill Item */
+.skill-item {
+    margin-bottom: 20px;
+    margin-left: 0.5in; /* Adds 0.5-inch margin to the left */
+    margin-right: 0.4in; /* Adds 0.5-inch margin to the left */
+
+
+}
+
+/* Skill Name + Percentage */
 .skill {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin: 10px 0;
+    justify-content: space-between;
     font-weight: 500;
+    color: #333;
 }
 
+/* Skill Bars */
 .skill-bar {
     width: 100%;
-    height: 10px;
+    height: 6px;
     background: #ddd;
     border-radius: 5px;
     margin-top: 5px;
@@ -338,5 +357,20 @@
     height: 100%;
     background: #4169e1;
     border-radius: 5px;
+    transition: width 0.5s ease-in-out;
 }
 
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: calc(100% - 3in);
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-container {
+        grid-template-columns: repeat(1, 1fr);
+        max-width: calc(100% - 1in);
+    }
+}
