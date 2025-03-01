@@ -20,12 +20,23 @@
 
         }
 
+#backgroundCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Moves it behind your content */
+    pointer-events: none; /* Prevents canvas from blocking clicks */
+}
+
+
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px;
-            background: #fff;
+            background: #4169e1;
             position: fixed;
             width: 100%;
             top: 0;
@@ -40,7 +51,7 @@
         .logo {
             font-size: 23px;
             font-weight: bold;
-            color: #000;
+            color: #fff;
         }
 
         .nav-links {
@@ -55,13 +66,13 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #000;
+            color: #fff;
             font-size: 14px;
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #4169e1;
+            color: #242526;
         }
 
         .menu-toggle {
@@ -137,7 +148,7 @@
 
 .social-icons a {
     font-size: 30px;
-    color: #333; /* Change color if needed */
+    color: #242526; /* Change color if needed */
     transition: color 0.3s ease;
 }
 
@@ -303,7 +314,7 @@
 .section-title {
     font-size: 2rem;
     margin-bottom: 30px;
-    color: #333;
+    color: #242526;
 }
 
 /* 3 Columns Layout */
@@ -361,7 +372,7 @@ margin-left: 15px;
     align-items: center;
     justify-content: space-between;
     font-weight: 500;
-    color: #333;
+    color: #242526;
 }
 
 /* Skill Bars */
@@ -449,6 +460,12 @@ margin-left: 15px;
     padding-right: 40px;
     margin-bottom: .7in;
 }
+.timeline-item.left h3{
+
+    color: #4169e1;
+}
+
+
 
 /* Right Side */
 .timeline-item.right {
@@ -458,6 +475,11 @@ margin-left: 15px;
     margin-bottom: .8in;
 
 }
+.timeline-item.right h3{
+
+    color: #4169e1;
+}
+
 
 /* Timeline Dots (Circles) */
 .timeline-dot {
@@ -487,6 +509,9 @@ margin-left: 15px;
         text-align: left;
         padding-left: 50px;
     }
+
+           
+
 
     .timeline-item.left {
         padding-right: 0;
@@ -623,7 +648,7 @@ margin-left: 15px;
 }
 .modal h2 {
     font-size: 1.8rem;
-    color: #333;
+    color: #242526;
 }
 
 .modal ul {
@@ -683,7 +708,7 @@ margin-left: 15px;
 .section-header h2 {
     font-size: 2rem;
     margin-bottom: 10px;
-    color: #333;
+    color: #242526;
 }
 
 .section-header p {
@@ -778,7 +803,7 @@ margin-left: 15px;
 
 .project-details h3 {
     font-size: 1.5rem;
-    color: #333;
+    color: #242526;
     margin-bottom: 10px;
 }
 
@@ -992,46 +1017,202 @@ footer {
 }
 
 .social-links-footer a:hover {
-    color: #ffcc00; /* Highlight color when hovered */
+    color: #242526; /* Highlight color when hovered */
 }
 
 
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-  }
+/* Default Light Mode (No Changes) */
 
-  .modal-content {
-    background: white;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 300px;
-  }
+/* Night Mode Styles */
+.night-mode-active {
+    background-color: #242526; /* Dark Background */
+    color: #fff; /* Light Text */
+}
 
-  .modal-content h2 {
-    margin-bottom: 10px;
-  }
+.night-mode-active a {
+    color: #fff; /* Ensure links are visible */
+}
+.night-mode-active h2 {
+    color: #4169e1; /* Ensure links are visible */
+}
+ .night-mode-active .skills-container {
+    background-color: #242526; /* Dark Background */
+    color: #fff; /* Light Text */
+}
 
-  .modal-content button {
-    background: #4169e1;
-    color: white;
-    padding: 10px 15px;
+/* Ensure the Skills section follows Night Mode */
+.night-mode-active #skills {
+    background-color: #242526; /* Dark Background */
+    color: #fff; /* Light Text */
+}
+
+/* Ensure skill bar fills remain visible */
+.night-mode-active .skill-bar {
+    background-color: #3a3b3c; /* Slightly lighter dark for contrast */
+}
+
+.night-mode-active .skill-fill {
+    background-color: #4169e1; /* Retain the blue */
+}
+
+/* Ensure all text inside the Skills section is readable */
+.night-mode-active #skills h3,
+.night-mode-active #skills span {
+    color: #f5f5f5;
+}
+
+
+
+.night-mode-active .resume-btn {
+    background-color: #4169e1; /* Keep the blue */
+}
+
+/* Ensure the Education section follows Night Mode */
+.night-mode-active #education {
+    background-color: #242526; /* Dark Background */
+    color: #fff; /* Light Text */
+}
+
+/* Ensure timeline text is readable */
+.night-mode-active #education h3 {
+    color: #4169e1;;
+}
+
+
+
+
+
+/* Night Mode - Services Section */
+.night-mode-active #services {
+    background-color: #242526; /* Dark background */
+    color: white; /* Text turns white */
+}
+
+/* Night Mode - Service Cards */
+.night-mode-active .service-card {
+    background-color: #333; /* Slightly lighter dark for cards */
+    color: white; /* Keep text white */
+    border: 1px solid #4169e1; /* Keep a subtle blue border */
+}
+
+/* Night Mode - Buttons */
+.night-mode-active .view-more {
+    background-color: #4169e1; /* Keep blue button */
+    color: white; /* Text stays white */
     border: none;
-    cursor: pointer;
-    margin-top: 10px;
-    border-radius: 5px;
+}
+
+
+/* Night Mode - Modal Background */
+.night-mode-active .modal {
+    background-color: rgba(0, 0, 0, 0.8); /* Dark transparent overlay */
+}
+
+/* Night Mode - Modal Content */
+.night-mode-active .modal-content {
+    background-color: #242526; /* Dark modal box */
+    color: white; /* White text */
+    border: 1px solid #4169e1; /* Blue border for a modern look */
+}
+
+/* Night Mode - Close Button */
+.night-mode-active .modal-content .close {
+    color: white; /* Make close button visible */
+}
+
+
+/* Night Mode - Portfolio Section */
+.night-mode-active #portfolio {
+    background-color: #242526; /* Dark Background */
+    color: white; /* Text Turns White */
+}
+
+/* Night Mode - Carousel Background */
+.night-mode-active .carousel-container {
+    background-color: #242526;
+}
+
+/* Night Mode - Carousel Items */
+.night-mode-active .carousel-item {
+    background-color: #fff; /* Darker Gray for Cards */
+}
+
+
+/* Night Mode - Carousel Buttons */
+.night-mode-active .carousel-arrow {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent White */
+    color: white;
+}
+
+.night-mode-active .carousel-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Night Mode - Active Dot */
+.night-mode-active .carousel-dots .dot.active {
+    background-color: #4169e1; /* Keep the blue for active dot */
+}
+
+.night-mode-active .carousel-dots .dot {
+    background-color: #ccc; /* Light Gray for Inactive */
+}
+
+/* Night Mode - Contact Section */
+.night-mode-active #contact {
+    background-color: #242526; /* Dark Background */
+    color: white; /* Text Turns White */
+}
+
+/* Night Mode - Contact Info Items */
+.night-mode-active .contact-item {
+    background-color: #242526; /* Dark Gray */
+    color: white;
+}
+.night-mode-active .contact-item p{
+    color: white;
+}
+
+
+
+/* Night Mode - Input Fields */
+.night-mode-active .contact-form input,
+.night-mode-active .contact-form textarea {
+    background-color: #303030;
+    color: white;}
+
+/* Placeholder Text */
+.night-mode-active .contact-form input::placeholder,
+.night-mode-active .contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Night Mode - Submit Button */
+.night-mode-active .contact-form button {
+    background-color: #4169e1; /* Keep the blue */
+    color: white;
+    border: none;
+}
+
+.night-mode-active .contact-form button:hover {
+    background-color: #365ac3; /* Slightly darker blue */
+}
+
+   #typing-text {
+    display: inline-block;
+    min-width: 200px;
+    text-align: center;
+    white-space: nowrap;
   }
 
-  .modal-content button:hover {
-    background: #365ac0;
+  /* Cursor Blinking Effect */
+  #typing-text::after {
+    content: "|";
+    display: inline-block;
+    animation: blink 0.7s infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
   }

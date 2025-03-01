@@ -13,6 +13,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
+    <link rel="icon" type="image/png" href="header.png">
+
   </head>
   <body>
     <header>
@@ -31,24 +33,25 @@
     </header>
 
     <section id="home" class="hero">
+    <canvas id="backgroundCanvas"></canvas>
       <div class="hero-content">
         <div class="social-links">
           <div class="social-icons">
-            <a href="https://linkedin.com/in/yourprofile" target="_blank"
+            <a href="https://www.linkedin.com/in/johnwillemstadosuyos/" target="_blank"
               ><i class="fab fa-linkedin"></i
             ></a>
-            <a href="https://github.com/yourprofile" target="_blank"
+            <a href="https://github.com/wllmstd" target="_blank"
               ><i class="fab fa-github"></i
             ></a>
-            <a href="https://instagram.com/yourprofile" target="_blank"
+            <a href="https://www.instagram.com/_wllmstd/" target="_blank"
               ><i class="fab fa-instagram"></i
             ></a>
           </div>
         </div>
 
         <div class="hero-text">
-          <h1>Hi, I'm Stad</h1>
-          <h2>Software Developer</h2>
+          <h1 >Hi, I'm Stad!</h1>
+          <h2 id="typing-text">Software Developer</h2>
           <p>
             Hi! I'm John Willemstad A. Osuyos, a 4th Year BSIT student at West
             Visayas State University, passionate about graphic design, web, and
@@ -112,8 +115,11 @@
             </div>
           </div>
 
-          <!-- Download Resume Button -->
-          <button class="resume-btn">Download Resume</button>
+<!-- Download Resume Button -->
+<a href="Resume.pdf" download="Stad_Osuyos_Resume.pdf">
+    <button class="resume-btn">Download Resume</button>
+</a>
+
         </div>
       </div>
     </section>
@@ -289,7 +295,7 @@
     
             <div class="timeline-item right">
                 <h3>Iloilo National High School</h3>
-                <p>Senior High School</p>
+                <p>Senior High School <br> TVL-ICT</p>
             </div>
     
             <div class="timeline-item left">
@@ -394,7 +400,7 @@
                 <img src="project1.png" alt="Project Image">
                 <div class="project-details">
                     <h3>CashMate</h3>
-                    <p>Short description of the app. It highlights the key features and functionalities.</p>
+                    <p>An undergraduate thesis project, a mobile app for visually impaired users that detects Philippine banknotes and provides audio feedback.</p>
                     <button class="preview-btn">Preview</button>
                 </div>
             </div>
@@ -404,7 +410,7 @@
                 <img src="project2.png" alt="Project Image">
                 <div class="project-details">
                     <h3>Bliss Bites</h3>
-                    <p>A brief explanation of what this app does and how it benefits users.</p>
+                    <p>A dynamic web app for cakes and desserts. Users can create an account, place orders, and store them in a virtual basket.</p>
                     <button class="preview-btn">Preview</button>
                 </div>
             </div>
@@ -414,7 +420,7 @@
                 <img src="project3.png" alt="Project Image">
                 <div class="project-details">
                     <h3>My Photography Portfolio</h3>
-                    <p>Details about this project, showcasing features and use cases.</p>
+                    <p>A website showcasing my favorite photographs, along with color enhancements and edits.</p>
                     <button class="preview-btn">Preview</button>
                 </div>
             </div>
@@ -423,7 +429,7 @@
               <img src="project4.png" alt="Project Image">
               <div class="project-details">
                   <h3>Pinoy Trivia Game</h3>
-                  <p>A brief overview of this project with key features.</p>
+                  <p>A standalone desktop quiz game featuring Philippine culture and current trends.</p>
                   <button class="preview-btn">Preview</button>
               </div>
           </div>
@@ -432,7 +438,7 @@
               <img src="project5.png" alt="Project Image">
               <div class="project-details">
                   <h3>The Erudite</h3>
-                  <p>Some details about this application and its functionality.</p>
+                  <p>A desktop application for managing library access, book borrowing, and inventory.</p>
                   <button class="preview-btn">Preview</button>
               </div>
           </div>
@@ -441,7 +447,7 @@
               <img src="project6.png" alt="Project Image">
               <div class="project-details">
                   <h3>RouteEase</h3>
-                  <p>Key highlights of this app and how it works.</p>
+                  <p>A prototype booking app for Iloilo City routes, providing live road updates and a history of visited locations.</p>
                   <button class="preview-btn">Preview</button>
               </div>
           </div>
@@ -450,7 +456,7 @@
               <img src="project7.png" alt="Project Image">
               <div class="project-details">
                   <h3>TrekTrail</h3>
-                  <p>A simple description of the features and purpose of this app.</p>
+                  <p>A standalone booking system for hiking trips, featuring mountain locations and available tour guides.</p>
                   <button class="preview-btn">Preview</button>
               </div>
           </div> 
@@ -459,7 +465,7 @@
               <img src="project8.png" alt="Project Image">
               <div class="project-details">
                   <h3>DormPal</h3>
-                  <p>A simple description of the features and purpose of this app.</p>
+                  <p>A web-based dormitory booking system that helps admins manage dorm conditions and process boarder payments.</p>
                   <button class="preview-btn">Preview</button>
               </div>
           </div>
@@ -558,13 +564,13 @@
 
     <!-- Column 3: Social Icons -->
     <div class="footer-column social-links-footer">
-      <a href="https://linkedin.com/in/yourprofile" target="_blank">
+      <a href="https://www.linkedin.com/in/johnwillemstadosuyos/" target="_blank">
         <i class="fab fa-linkedin"></i>
       </a>
-      <a href="https://github.com/yourprofile" target="_blank">
+      <a href="https://github.com/wllmstd" target="_blank">
         <i class="fab fa-github"></i>
       </a>
-      <a href="https://instagram.com/yourprofile" target="_blank">
+      <a href="https://www.instagram.com/_wllmstd/" target="_blank">
         <i class="fab fa-instagram"></i>
       </a>
     </div>
