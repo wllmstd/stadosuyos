@@ -580,16 +580,9 @@
 
 
   <script>
-document.getElementById("contactForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent default submission to show modal first
-
-    // Show the modal
+document.getElementById("contactForm").addEventListener("submit", function () {
+    // Show the modal immediately
     document.getElementById("thankYouModal").style.display = "flex";
-
-    // Wait a bit before submitting to FormSubmit
-    setTimeout(() => {
-        this.submit(); // Now allow form submission
-    }, 1000); // 1 second delay before submission
 });
 
 function closeModal() {
