@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stad Osuyos | Portfolio</title>
-    <link rel="stylesheet" href="../styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
-  </head>
-  <body>
-  <header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashMate | Project 1</title>
+    <link rel="stylesheet" href="projects.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="../header.png">
+
+</head>
+<body>
+
+<header>
     <nav class="navbar">
       <div class="logo">Stad Osuyos</div>
       <ul class="nav-links">
@@ -25,12 +22,109 @@
         <li><a href="../index.html#services">Services</a></li>
         <li><a href="../index.html#portfolio">Portfolio</a></li>
         <li><a href="../index.html#contact">Contact</a></li>
-        <li class="night-mode" onclick="toggleNightMode()">🌙</li>
+        <li id="mode-icon" onclick="toggleNightMode()">🌙</li>
       </ul>
     </nav>
-  </header>
+</header>
 
+<section class="project-wrapper">
+  <button class="go-back-btn" onclick="history.back()">
+    <i class="fas fa-arrow-left"></i> Go Back
+</button>
+    <div class="project-header">
+        <h1>CashMate</h1>
+        <p class="project-tagline">Effortless Cash Recognition for the Visually Impaired.</p>
+    </div>
 
+    <div class="project-content">
+        <div class="project-info-box">
+            <h2>Project Type</h2>
+            <p>Mobile App</p>
+        </div>
 
+        <div class="project-info-box">
+            <h2>Technologies Used</h2>
+            <p>Python, TensorFlow, Flutter</p>
+        </div>
+
+        <div class="project-info-box">
+            <h2>Brief Overview</h2>
+            <p>CashMate is an assistive mobile application designed to help visually impaired users recognize different banknotes through edge detection techniques.</p>
+        </div>
+
+        <div class="project-info-box">
+            <h2>Key Features</h2>
+            <ul class="project-feature-list">
+                <li><i class="fas fa-check-circle"></i> Real-time banknote detection</li>
+                <li><i class="fas fa-check-circle"></i> Audio feedback for recognition</li>
+                <li><i class="fas fa-check-circle"></i> Offline functionality</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="project-screenshots">
+        <h2>Screenshots</h2>
+        <div class="screenshot-container">
+            <img src="cm1.png" alt="Screenshot 1">
+            <img src="cm2.png" alt="Screenshot 2">
+            <img src="cm3.png" alt="Screenshot 3">
+            <img src="cm4.png" alt="Screenshot 4">
+            <img src="cm5.png" alt="Screenshot 5">
+            <img src="cm6.png" alt="Screenshot 6">
+            <img src="cm7.png" alt="Screenshot 7">
+        </div>
+    </div>
+
+    <div class="project-summary">
+        <h2>Challenges & Solutions</h2>
+        <p>Ensuring high accuracy in edge detection was a challenge, which was solved by training the model with multiple datasets and enhancing feature extraction.</p>
+    </div>
+
+    <div class="project-summary">
+        <h2>Outcome & Impact</h2>
+        <p>Helped visually impaired users differentiate banknotes easily, with positive feedback from early testers.</p>
+    </div>
+
+    <div class="project-footer">
+        <a href="#" class="project-btn">Live Demo / Download</a>
+    </div>
+</section>
+
+<script>
+  function toggleNightMode() {
+      const body = document.body;
+      const icon = document.getElementById("mode-icon");
+  
+      // Toggle night mode class
+      body.classList.toggle("night-mode");
+  
+      // Check if night mode is active
+      if (body.classList.contains("night-mode")) {
+          icon.innerHTML = "☀️"; // Change to sun icon
+          localStorage.setItem("theme", "dark");
+      } else {
+          icon.innerHTML = "🌙"; // Change to moon icon
+          localStorage.setItem("theme", "light");
+      }
+  }
+  
+  // Apply saved theme on page load
+  window.onload = function () {
+      const savedTheme = localStorage.getItem("theme");
+      const body = document.body;
+      const icon = document.getElementById("mode-icon");
+  
+      if (savedTheme === "dark") {
+          body.classList.add("night-mode");
+          icon.innerHTML = "☀️"; // Show sun icon if dark mode is on
+      } else {
+          body.classList.remove("night-mode");
+          icon.innerHTML = "🌙"; // Show moon icon if light mode is on
+      }
+  };
+  </script>
+  
 
 </body>
+
+</html>

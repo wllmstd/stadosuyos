@@ -88,6 +88,12 @@ showSlide(currentSlide);
 
 
 
+
+
+  
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const canvas = document.getElementById("backgroundCanvas");
     if (!canvas) {
