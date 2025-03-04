@@ -30,9 +30,9 @@
 </header>
 
 <section class="project-wrapper">
-  <button class="go-back-btn" onclick="history.back()">
-    <i class="fas fa-arrow-left"></i> Go Back
-</button>
+    <a href="../index.html#portfolio" class="go-back-btn">
+        <i class="fas fa-arrow-left"></i> Go Back
+    </a>
     <div class="project-header">
         <h1>RouteEase</h1>
         <p class="project-tagline">Redefining your daily commute.</p>
@@ -91,6 +91,10 @@
     <div class="project-footer">
         <a href="https://www.figma.com/design/KgH2obTYKoSiT4rW2QqwVS/RouteEase?node-id=0-1" class="project-btn" target="_blank" rel="noopener noreferrer">Live Demo / Download</a>
     </div>
+        <!-- Scroll to Top Button -->
+<button id="scrollToTop" class="scroll-to-top">
+    <i class="fas fa-arrow-up"></i>
+</button>
 </section>
 
 <script>
@@ -134,6 +138,25 @@
           icon.innerHTML = "🌙"; // Show moon icon if light mode is on
       }
   };
+
+    // Scroll to Top Button Functionality
+document.addEventListener("DOMContentLoaded", () => {
+    const scrollToTopBtn = document.getElementById("scrollToTop");
+
+    // Show button when scrolling down
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            scrollToTopBtn.style.display = "flex";
+        } else {
+            scrollToTopBtn.style.display = "none";
+        }
+    });
+
+    // Scroll back to the top smoothly
+    scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+});
 
   </script>
   

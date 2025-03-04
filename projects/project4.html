@@ -30,9 +30,9 @@
 </header>
 
 <section class="project-wrapper">
-  <button class="go-back-btn" onclick="history.back()">
-    <i class="fas fa-arrow-left"></i> Go Back
-</button>
+    <a href="../index.html#portfolio" class="go-back-btn">
+        <i class="fas fa-arrow-left"></i> Go Back
+    </a>
     <div class="project-header">
         <h1>Pinoy Trivia Game</h1>
         <p class="project-tagline">Tara na at maki chismis!</p>
@@ -87,6 +87,11 @@
         <h2>Outcome & Impact</h2>
         <p>The game promotes Filipino culture in an engaging way, encouraging players to learn while competing for high scores.</p>
     </div>
+
+        <!-- Scroll to Top Button -->
+<button id="scrollToTop" class="scroll-to-top">
+    <i class="fas fa-arrow-up"></i>
+</button>
 </section>
 
 <script>
@@ -130,6 +135,25 @@
           icon.innerHTML = "🌙"; // Show moon icon if light mode is on
       }
   };
+
+    // Scroll to Top Button Functionality
+document.addEventListener("DOMContentLoaded", () => {
+    const scrollToTopBtn = document.getElementById("scrollToTop");
+
+    // Show button when scrolling down
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            scrollToTopBtn.style.display = "flex";
+        } else {
+            scrollToTopBtn.style.display = "none";
+        }
+    });
+
+    // Scroll back to the top smoothly
+    scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+});
 
   </script>
   

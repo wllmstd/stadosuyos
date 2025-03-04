@@ -30,9 +30,10 @@
 </header>
 
 <section class="project-wrapper">
-  <button class="go-back-btn" onclick="history.back()">
-    <i class="fas fa-arrow-left"></i> Go Back
-</button>
+    <a href="../index.html#portfolio" class="go-back-btn">
+        <i class="fas fa-arrow-left"></i> Go Back
+    </a>
+    
     <div class="project-header">
         <h1>CashMate</h1>
         <p class="project-tagline">Accessibility isn’t just a privilege; it’s a fundamental right!</p>
@@ -87,6 +88,11 @@
         <h2>Outcome & Impact</h2>
         <p>Helped visually impaired users differentiate banknotes easily, with positive feedback from early testers at SPED-Integrated School for Exceptional Children.</p>
     </div>
+    <!-- Scroll to Top Button -->
+<button id="scrollToTop" class="scroll-to-top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
 </section>
 
 <script>
@@ -130,6 +136,25 @@
           icon.innerHTML = "🌙"; // Show moon icon if light mode is on
       }
   };
+
+  // Scroll to Top Button Functionality
+document.addEventListener("DOMContentLoaded", () => {
+    const scrollToTopBtn = document.getElementById("scrollToTop");
+
+    // Show button when scrolling down
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            scrollToTopBtn.style.display = "flex";
+        } else {
+            scrollToTopBtn.style.display = "none";
+        }
+    });
+
+    // Scroll back to the top smoothly
+    scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+});
 
   </script>
   
