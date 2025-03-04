@@ -236,3 +236,21 @@ function toggleNightMode() {
 
     typeEffect();
   });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const scrollElements = document.querySelectorAll(".scroll-reveal");
+
+    function handleScroll() {
+        scrollElements.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
+                el.classList.add("show");
+            } else {
+                el.classList.remove("show"); // Remove when out of view
+            }
+        });
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+});
