@@ -95,98 +95,143 @@ showSlide(currentSlide);
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const canvas = document.getElementById("backgroundCanvas");
-    if (!canvas) {
-        console.error("Canvas element not found!");
-        return;
+    var canvas = document.getElementById("backgroundCanvas");
+    var context = canvas.getContext("2d");
+
+    var time = 0,
+        velocity = 0.1,
+        velocityTarget = 0.1,
+        width,
+        height,
+        lastX,
+        lastY;
+
+    var MAX_OFFSET = 400;
+    var SPACING = 4;
+    var POINTS = MAX_OFFSET / SPACING;
+    var PEAK = MAX_OFFSET * 0.25;
+    var POINTS_PER_LAP = 6;
+    var SHADOW_STRENGTH = 0;
+
+    function setup() {
+        resize();
+        step();
+        window.addEventListener("resize", resize);
+        window.addEventListener("mousedown", onMouseDown);
+        document.addEventListener("touchstart", onTouchStart);
     }
 
-    const ctx = canvas.getContext("2d");
-
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    let shapes = [];
-
-    function createShape(x, y) {
-        const size = Math.random() * 50 + 20;
-        const opacity = 1;
-        const growthSpeed = Math.random() * 0.5 + 0.2;
-        const fadeSpeed = 0.008;
-        const rotation = Math.random() * 360;
-        const rotationSpeed = (Math.random() * 0.02) - 0.01;
-
-        const colors = [
-            "rgba(65, 105, 225, 0.8)",  
-            "rgba(30, 144, 255, 0.7)",  
-            "rgba(0, 102, 204, 0.6)"    
-        ];
-        const color = colors[Math.floor(Math.random() * colors.length)];
-
-        const shapeTypes = ["circle", "square", "triangle"];
-        const shapeType = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
-
-        shapes.push({ x, y, size, opacity, growthSpeed, fadeSpeed, color, shapeType, rotation, rotationSpeed });
+    function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
     }
 
-    function drawShapes() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        shapes.forEach((shape, index) => {
-            ctx.save();
-            ctx.translate(shape.x, shape.y);
-            ctx.rotate(shape.rotation * Math.PI / 180);
-            ctx.globalAlpha = shape.opacity;
-            ctx.strokeStyle = shape.color;
-            ctx.lineWidth = 3;
-
-            if (shape.shapeType === "circle") {
-                ctx.beginPath();
-                ctx.arc(0, 0, shape.size, 0, Math.PI * 2);
-                ctx.stroke();
-            } else if (shape.shapeType === "square") {
-                ctx.strokeRect(-shape.size / 2, -shape.size / 2, shape.size, shape.size);
-            } else if (shape.shapeType === "triangle") {
-                ctx.beginPath();
-                ctx.moveTo(0, -shape.size);
-                ctx.lineTo(-shape.size, shape.size);
-                ctx.lineTo(shape.size, shape.size);
-                ctx.closePath();
-                ctx.stroke();
-            }
-
-            ctx.restore();
-
-            shape.size += shape.growthSpeed;
-            shape.opacity -= shape.fadeSpeed;
-            shape.rotation += shape.rotationSpeed;
-
-            if (shape.opacity <= 0) shapes.splice(index, 1);
-        });
-
-        requestAnimationFrame(drawShapes);
+    function step() {
+        time += velocity;
+        velocity += (velocityTarget - velocity) * 0.3;
+        clear();
+        render();
+        requestAnimationFrame(step);
     }
 
-    function startRandomizedShapes() {
-        function generateRandomShape() {
-            const randomX = Math.random() * canvas.width;
-            const randomY = Math.random() * canvas.height;
-            createShape(randomX, randomY);
+    function clear() {
+        context.clearRect(0, 0, width, height);
+    }
 
-            // Call itself again at a random interval (between 300ms - 1200ms)
-            setTimeout(generateRandomShape, Math.random() * 900 + 300);
+    function render() {
+        var x, y,
+            cx = width / 2,
+            cy = height / 2;
+
+        context.globalCompositeOperation = "lighter";
+        context.strokeStyle = "#4169e1";
+        context.lineWidth = 2;
+        context.beginPath();
+
+        for (var i = POINTS; i > 0; i--) {
+            var value = i * SPACING + (time % SPACING);
+
+            var ax = Math.sin(value / POINTS_PER_LAP) * Math.PI,
+                ay = Math.cos(value / POINTS_PER_LAP) * Math.PI;
+
+            x = ax * value;
+            y = ay * value * 0.35;
+
+            var o = 1 - Math.min(value, PEAK) / PEAK;
+
+            y -= Math.pow(o, 2) * 200;
+            y += (200 * value) / MAX_OFFSET;
+            y += (x / cx) * width * 0.1;
+
+            context.globalAlpha = 0.3 * (1 - ( value / MAX_OFFSET )); 
+            context.shadowBlur = SHADOW_STRENGTH * o;
+
+            context.lineTo(cx + x, cy + y);
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(cx + x, cy + y);
         }
 
-        generateRandomShape();
+        context.lineTo(cx, cy - 200);
+        context.lineTo(cx, 0);
+        context.stroke();
     }
 
-    startRandomizedShapes();
-    drawShapes();
+    function onMouseDown(event) {
+        lastX = event.clientX;
+        lastY = event.clientY;
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+    }
+
+    function onMouseMove(event) {
+        var vx = (event.clientX - lastX) / 100;
+        var vy = (event.clientY - lastY) / 100;
+
+        if (event.clientY < height / 2) vx *= -1;
+        if (event.clientX > width / 2) vy *= -1;
+
+        velocityTarget = vx + vy;
+
+        lastX = event.clientX;
+        lastY = event.clientY;
+    }
+
+    function onMouseUp() {
+        document.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mouseup", onMouseUp);
+    }
+
+    function onTouchStart(event) {
+        event.preventDefault();
+        lastX = event.touches[0].clientX;
+        lastY = event.touches[0].clientY;
+        document.addEventListener("touchmove", onTouchMove);
+        document.addEventListener("touchend", onTouchEnd);
+    }
+
+    function onTouchMove(event) {
+        var vx = (event.touches[0].clientX - lastX) / 100;
+        var vy = (event.touches[0].clientY - lastY) / 100;
+
+        if (event.touches[0].clientY < height / 2) vx *= -1;
+        if (event.touches[0].clientX > width / 2) vy *= -1;
+
+        velocityTarget = vx + vy;
+
+        lastX = event.touches[0].clientX;
+        lastY = event.touches[0].clientY;
+    }
+
+    function onTouchEnd() {
+        document.removeEventListener("touchmove", onTouchMove);
+        document.removeEventListener("touchend", onTouchEnd);
+    }
+
+    setup();
 });
+
 
 
 function toggleNightMode() {

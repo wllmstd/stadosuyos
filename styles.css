@@ -27,15 +27,17 @@ html {
   padding: 0 5%; /* More responsive padding */
 }
 
-#backgroundCanvas {
+canvas {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100dvh;
-  z-index: -1; /* Moves it behind your content */
-  pointer-events: none; /* Prevents canvas from blocking clicks */
+  height: 100vh;
+  z-index: 0; /* Moves behind other content */
+  display: block;
 }
+
+
 /* NAVBAR */
 .navbar {
   display: flex;
@@ -1481,6 +1483,11 @@ footer {
 .night-mode-active .contact-form button:hover {
   background-color: #365ac3; /* Slightly darker blue */
 }
+
+.night-mode-active .footer-column .footer-logo {
+  color: white;
+}
+
 
 .scroll-reveal {
   opacity: 0;
